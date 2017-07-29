@@ -84,8 +84,8 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
 	        		console.log(err);
 	        });
 	    }
-        var mainquery = "INSERT INTO ??(??,??,??) VALUES (?,?,?)";
-        var maintable = ["posts", "user_id", "type", "anonymous", req.body.user_id, req.body.type, req.body.anonymous];
+        var mainquery = "INSERT INTO ??(??,??,??,??) VALUES (?,?,?,?)";
+        var maintable = ["posts", "user_id", "type", "anonymous", "title", req.body.user_id, req.body.type, req.body.anonymous, req.body.title];
         mainquery = mysql.format(mainquery,maintable);
 
         connection.query(mainquery,function(err,rows){
