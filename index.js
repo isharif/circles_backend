@@ -3,7 +3,11 @@ var mysql   = require("mysql");
 var bodyParser  = require("body-parser");
 var md5 = require('MD5');
 var rest = require("./REST.js");
+var fs = require("fs");
+var path = require("path");
+
 var app  = express();
+
 
 function REST(){
     var self = this;
@@ -13,9 +17,9 @@ function REST(){
 REST.prototype.connectMysql = function() {
     var self = this;
     var pool      =    mysql.createPool({
-        connectionLimit : 1000,
+        connectionLimit : 100,
         host     : 'localhost',
-        user     : 'root',
+        user     : 'imran',
         password : 'bnm0acd312',
         database : 'circles',
         debug    :  false
@@ -31,11 +35,12 @@ REST.prototype.connectMysql = function() {
 
 REST.prototype.configureExpress = function(connection) {
       var self = this;
-      app.use(bodyParser.urlencoded({ extended: true }));
-      app.use(bodyParser.json());
+      app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+      app.use(bodyParser.json({limit: '50mb'}));
+      app.use(express.static(path.join(__dirname, 'public')));
       var router = express.Router();
       app.use('/api', router);
-      var rest_router = new rest(router,connection,md5);
+      var rest_router = new rest(router,connection,md5, fs);
       self.startServer();
 }
 
