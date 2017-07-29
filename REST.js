@@ -104,7 +104,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             			switch(req.body.type){
 	            			case "picture_post":
 	            			{	
-	            				var publicImagePath = "46.101.242.198" + "/public/" + imageName;
+	            				var publicImagePath = "46.101.242.198" + imageName;
 		            			var imagequery = "INSERT INTO ??(??,??) VALUES (?,?)";
 				        		var imagetable = ["post_images", "post_id", "url", post_id, publicImagePath];
 				        		imagequery = mysql.format(imagequery,imagetable);
