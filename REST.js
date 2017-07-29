@@ -70,7 +70,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
         });
     });
 
-    router.post("/posts_sent",function(req,res){
+    router.post("/post_sent",function(req,res){
     	var post_id;
     	if (req.body.type == "picture_post")
     	{
@@ -166,6 +166,31 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             }
         });
 
+    });
+
+    router.post("/comment_sent",function(req,res){
+        var query = "INSERT INTO ??(??,??,??,??) VALUES (?,?,?,?)";
+        //console.log(req.body.name,req.body.email,req.body.password);
+        var table = ["comments", "body", "parent_id", "submitter", "post_id", req.body.body, req.body.parent_id, req.body.submitter, req.body.post_id];
+        query = mysql.format(query,table);
+        connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : err});
+            } else {
+                res.json({"Error" : false, "Message" : rows});
+            }
+        });
+    });
+
+    router.get("/get_comments/:post_id",function(req,res){
+        var picturePostsQuery = "SELECT * FROM comments WHERE post_id = req.params.post_id";
+        connection.query(picturePostsQuery,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : err});
+            } else {
+                res.json({"Error" : false, "Message" : rows});
+            }
+        });
     });
 
 }
