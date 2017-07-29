@@ -183,9 +183,9 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
     });
 
     router.get("/get_comments",function(req,res){
-        var query = "SELECT * FROM comments WHERE post_id = ?";
-        var table = ["req.params.post_id"];
-        query = mysql.format(query, table);
+        var query = "SELECT * FROM comments WHERE post_id = 1";
+        //var table = ["req.params.post_id"];
+        //query = mysql.format(query, table);
         connection.query(query,function(err,rows){
             if(err) {
                 res.json({"Error" : true, "Message" : err});
