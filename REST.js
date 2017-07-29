@@ -169,7 +169,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
     });
 
     router.post("/comment_sent",function(req,res){
-        var query = "INSERT INTO ??(??,??,??,??) VALUES (?,?,?,?)";
+        var query = "INSERT INTO ??(??,??,??,??,??) VALUES (?,?,?,?,?)";
         //console.log(req.body.name,req.body.email,req.body.password);
         var table = ["comments", "body", "parent_id", "submitter", "post_id", "anonymous", req.body.body, req.body.parent_id, req.body.submitter, req.body.post_id, req.body.anonymous];
         query = mysql.format(query,table);
