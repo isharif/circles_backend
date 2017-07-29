@@ -76,7 +76,8 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
     	{
 	    	var data = req.body.data;
 	        var imageName = Math.floor(Math.random()*999999999);
-	        var imagePath = __dirname + "/public/" + imageName + ".jpg";
+	        imageName = imageName + ".jpg";
+	        var imagePath = __dirname + "/public/" + imageName;
 	        var imageBuffer = new Buffer(req.body.data, 'base64');
 	        fs.writeFile(imagePath, imageBuffer, function(err) { 
 	        	if (err)
@@ -102,9 +103,10 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             			post_id = rows[0]["LAST_INSERT_ID()"];
             			switch(req.body.type){
 	            			case "picture_post":
-	            			{
+	            			{	
+	            				var publicImagePath = "46.101.242.198" + "/public/" + imageName;
 		            			var imagequery = "INSERT INTO ??(??,??) VALUES (?,?)";
-				        		var imagetable = ["post_images", "post_id", "url", post_id, imagePath];
+				        		var imagetable = ["post_images", "post_id", "url", post_id, publicImagePath];
 				        		imagequery = mysql.format(imagequery,imagetable);
 				        		connection.query(imagequery, function(err,rows){
 				            		if(err)
