@@ -10,12 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
     "MD5": "*",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.3",
     "mysql": "*"
   },
-  "devDependencies": {
-    "cors": "^2.8.4"
-  }
+  "devDependencies": {}
 }
