@@ -5,6 +5,7 @@ var md5 = require('MD5');
 var rest = require("./REST.js");
 var fs = require("fs");
 var path = require("path");
+var cors = require('cors')
 
 var app  = express();
 
@@ -35,6 +36,7 @@ REST.prototype.connectMysql = function() {
 
 REST.prototype.configureExpress = function(connection) {
       var self = this;
+      app.use(cors())
       app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
       app.use(bodyParser.json({limit: '50mb'}));
       app.use(express.static('public'));
