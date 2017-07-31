@@ -42,7 +42,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
 		            if(err) {
 		                res.json({"Error" : true, "Message" : err});
 		            } else {
-		                res.json({"Error" : false, "Message" : rows[0].user_id})
+		                res.json({"Error" : false, "Message" : rows})
 		            }
         		});
             }
