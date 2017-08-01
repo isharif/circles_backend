@@ -36,7 +36,6 @@ REST.prototype.connectMysql = function() {
 
 REST.prototype.configureExpress = function(connection) {
       var self = this;
-      app.use(cors())
       app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
       app.use(bodyParser.json({limit: '50mb'}));
       app.use(express.static('public'));
