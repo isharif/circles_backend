@@ -176,9 +176,12 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
         var table = ["comments", "body", "submitter", "post_id", "anonymous", "parent_id", "has_child", req.body.body, req.body.submitter, req.body.post_id, req.body.anonymous, req.body.parent_id, req.body.has_Child];
         query = mysql.format(query,table);
         connection.query(query,function(err,rows){
-            if(err) {
+            if(err) 
+            {
                 res.json({"Error" : true, "Message" : err});
-            } else {
+            } 
+            else 
+            {
                 connection.query("SELECT LAST_INSERT_ID()", function(err,rows){
             		if(err)
             		{
@@ -188,6 +191,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             		{
             			res.json({"Error" : false, "Message" : rows});
             		}
+            	});
             }
         });
     });
