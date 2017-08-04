@@ -179,7 +179,15 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             if(err) {
                 res.json({"Error" : true, "Message" : err});
             } else {
-                res.json({"Error" : false, "Message" : rows});
+                connection.query("SELECT LAST_INSERT_ID()", function(err,rows){
+            		if(err)
+            		{
+            			res.json({"Error" : true, "Message" : err});
+            		}
+            		else
+            		{
+            			res.json({"Error" : false, "Message" : rows});
+            		}
             }
         });
     });
