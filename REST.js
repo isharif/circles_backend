@@ -226,7 +226,9 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
 
     router.get("/get_user_posts",function(req,res){
         var postList = [];
-        var picturePostsQuery = "SELECT * FROM posts WHERE INNER JOIN post_images ON posts.post_id = post_images.post_id";
+        var picturePostsQuery = "SELECT * FROM posts WHERE ??=? INNER JOIN post_images ON posts.post_id = post_images.post_id";
+        var picturePostsTable = ["user_id", req.query.user_id];
+        picturePostsQuery = mysql.format(picturePostsQuery,picturePostsTable);
         connection.query(picturePostsQuery,function(err,rows){
             if(err) {
                 res.json({"Error" : true, "Message" : err});
@@ -234,7 +236,9 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                 Array.prototype.push.apply(postList, rows);
             }
         });
-        var textPostsQuery = "SELECT * FROM posts INNER JOIN text_posts ON posts.post_id = text_posts.post_id"
+        var textPostsQuery = "SELECT * FROM posts WHERE ??=? INNER JOIN text_posts ON posts.post_id = text_posts.post_id"
+        var textPostsTable = ["user_id", req.query.user_id];
+        textPostsQuery = mysql.format(textPostsQuery,textPostsTable);
         connection.query(textPostsQuery,function(err,rows){
             if(err) {
                 res.json({"Error" : true, "Message" : err});
