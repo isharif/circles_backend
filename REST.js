@@ -249,6 +249,20 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
         });
     });
 
+    router.get("/get_comments_user_id",function(req,res){
+        var query = "SELECT * FROM comments WHERE user_id = ?";
+    	//var query = "SELECT * FROM comments";
+        var table = [req.query.user_id];
+        query = mysql.format(query, table);
+        connection.query(query,function(err,rows){
+            if(err) {
+                res.json({"Error" : true, "Message" : err});
+            } else {
+                res.json({"Error" : false, "Message" : rows});
+            }
+        });
+    });
+
 }
 
 module.exports = REST_ROUTER;
