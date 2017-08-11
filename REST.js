@@ -250,7 +250,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
     });
 
     router.get("/get_comments_user_id",function(req,res){
-        var query = "SELECT * FROM comments WHERE user_id = ?";
+        var query = "SELECT * FROM comments WHERE submitter = ?";
     	//var query = "SELECT * FROM comments";
         var table = [req.query.user_id];
         query = mysql.format(query, table);
