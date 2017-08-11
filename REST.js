@@ -252,7 +252,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
     router.get("/get_comments_user_id",function(req,res){
         var query = "SELECT * FROM comments WHERE submitter = ?";
     	//var query = "SELECT * FROM comments";
-        var table = [req.query.user_id];
+        var table = [req.query.submitter];
         query = mysql.format(query, table);
         connection.query(query,function(err,rows){
             if(err) {
