@@ -60,6 +60,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             } else {
                 if(rows.length < 1)
                 {
+                	console.log(results);
                 	res.json({"Error" : true, "Message" : rows});
                 }
                 else
