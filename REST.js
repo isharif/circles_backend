@@ -60,12 +60,13 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             } else {
                 if(rows.length < 1)
                 {
-                	console.log(rows);
-                	console.log("login run");
                 	res.json({"Error" : true, "Message" : rows});
                 }
                 else
                 {
+                	console.log(rows);
+                	console.log("login run");
+                	console.log("fuck this shit");
                 	res.json({"Error" : false, "Message" : rows});
                 }
             }
