@@ -60,8 +60,8 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             } else {
                 if(rows.length < 1)
                 {
-                	console.log(results);
-                	console.log("login run")
+                	console.log(rows);
+                	console.log("login run");
                 	res.json({"Error" : true, "Message" : rows});
                 }
                 else
