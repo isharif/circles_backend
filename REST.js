@@ -66,7 +66,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                 {
                 	var locationUpdateQuery = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
                 	var locationUpdateTable = ["users", "users.last_login_location", req.body.location, "users.user_id", rows[0].user_id];
-                	var locationUpdateQuery = mysqsl.format(locationUpdateQuery, locationUpdateTable);
+                	var locationUpdateQuery = mysql.format(locationUpdateQuery, locationUpdateTable);
                 	connection.query(locationUpdateQuery, function(err, rows){
                 	});
                 	console.log(rows[0].user_id);
