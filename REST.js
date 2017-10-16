@@ -64,9 +64,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                 }
                 else
                 {
-                	console.log(rows);
-                	console.log("login run");
-                	console.log("fuck this shit");
+                	console.log(rows[0].user_id);
                 	res.json({"Error" : false, "Message" : rows});
                 }
             }
