@@ -169,7 +169,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                 res.json({"Error" : true, "Message" : err});
             } else {
                 Array.prototype.push.apply(postList, rows);
-                console.log("this is the stuff in postList"+postList[0])
+                console.log("this is the stuff in postList"+JSON.stringify(postList[0]));
                 res.json({"Error" : false, "Message" : postList})
             }
         });
