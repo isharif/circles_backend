@@ -169,7 +169,46 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                 res.json({"Error" : true, "Message" : err});
             } else {
                 Array.prototype.push.apply(postList, rows);
-                console.log("this is the stuff in postList"+JSON.stringify(postList[0]));
+                console.log("this is the stuff in postList"+JSON.stringify(postList));
+                switch(req.query.type) {
+                    case "hot":
+                        postList.sort(function(a, b){
+                            let baseDate = new Date("2016-04-30T00:00:00Z");
+                            let postOneDate = new Date(a.submitted);
+                            let postTwoDate = new Date(b.submitted);
+                            let postOneTime = (postOneDate.getTime() -  baseDate.getTime())*10^6;
+                            let postTwoTime = (postTwoDate.getTime() - baseDate.getTime())*10^6;
+                            return 9000*Math.log2(b.upvotes-b.downvotes)+postTwoTime - 9000*Math.log2(a.upvotes-a.downvotes)+postOneTime;
+                        });
+                        break;
+                    case "best":
+                        postList.sort(function(a, b){
+                            return (b.upvotes-b.downvotes)-(a.upvotes-a.downvotes);
+                        });
+                        break;
+                    case "controversial":
+                        postList.sort(function(a, b){
+                            let baseDate = new Date("2016-04-30T00:00:00Z");
+                            let postOneDate = new Date(a.submitted);
+                            let postTwoDate = new Date(b.submitted);
+                            let postOneTime = (postOneDate.getTime() -  baseDate.getTime())*10^6;
+                            let postTwoTime = (postTwoDate.getTime() - baseDate.getTime())*10^6;
+                            return (9000*Math.log2(b.upvotes-b.downvotes)+postTwoTime)*(b.downvotes/b.upvotes) - (9000*Math.log2(a.upvotes-a.downvotes)+postOneTime)*(a.downvotes/a.upvotes);
+                        });
+                    break;
+                    case "new":
+                        postList.sort(function(a, b){
+                            let baseDate = new Date("2016-04-30T00:00:00Z");
+                            let postOneDate = new Date(a.submitted);
+                            let postTwoDate = new Date(b.submitted);
+                            let postOneTime = (postOneDate.getTime() -  baseDate.getTime())*10^6;
+                            let postTwoTime = (postTwoDate.getTime() - baseDate.getTime())*10^6;
+                            return postTwoTime - postOneTime;
+                        });
+                    break;
+                    default:
+                }         
+                console.log("this is the stuff in postList after sorting"+JSON.stringify(postList));       
                 res.json({"Error" : false, "Message" : postList})
             }
         });
