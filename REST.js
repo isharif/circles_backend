@@ -178,13 +178,13 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                             let postTwoDate = new Date(b.submitted);
                             let postOneTime = (postOneDate.getTime() -  baseDate.getTime())*10^6;
                             let postTwoTime = (postTwoDate.getTime() - baseDate.getTime())*10^6;
-                            var netUpVotesb = b.upvotes-b.downvotes;
-                            var netUpVotesa = a.upvotes-a.downvotes;
+                            let netUpVotesb = b.upvotes-b.downvotes;
+                            let netUpVotesa = a.upvotes-a.downvotes;
                             if (netUpVotesb == 0)
                             {
                                 netUpVotesb = 1;
                             }
-                            if (netUpvotesa == 0)
+                            if (netUpVotesa == 0)
                             {
                                 netUpvotesa = 1;
                             }
@@ -203,8 +203,8 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                             let postTwoDate = new Date(b.submitted);
                             let postOneTime = (postOneDate.getTime() -  baseDate.getTime())*10^6;
                             let postTwoTime = (postTwoDate.getTime() - baseDate.getTime())*10^6;
-                            var netUpVotesb = b.upvotes-b.downvotes;
-                            var netUpVotesa = a.upvotes-a.downvotes;
+                            let netUpVotesb = b.upvotes-b.downvotes;
+                            let netUpVotesa = a.upvotes-a.downvotes;
                             if (netUpVotesb == 0)
                             {
                                 netUpVotesb = 1;
