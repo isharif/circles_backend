@@ -178,13 +178,13 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                             let postTwoDate = new Date(b.submitted);
                             let postOneTime = (postOneDate.getTime() -  baseDate.getTime())*10^6;
                             let postTwoTime = (postTwoDate.getTime() - baseDate.getTime())*10^6;
-                            let netUpVotesb = b.upvotes-b.downvotes;
-                            let netUpVotesa = a.upvotes-a.downvotes;
-                            if (netUpVotesb == 0)
+                            let netUpvotesb = b.upvotes-b.downvotes;
+                            let netUpvotesa = a.upvotes-a.downvotes;
+                            if (netUpvotesb == 0)
                             {
-                                netUpVotesb = 1;
+                                netUpvotesb = 1;
                             }
-                            if (netUpVotesa == 0)
+                            if (netUpvotesa == 0)
                             {
                                 netUpvotesa = 1;
                             }
@@ -203,11 +203,11 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                             let postTwoDate = new Date(b.submitted);
                             let postOneTime = (postOneDate.getTime() -  baseDate.getTime())*10^6;
                             let postTwoTime = (postTwoDate.getTime() - baseDate.getTime())*10^6;
-                            let netUpVotesb = b.upvotes-b.downvotes;
-                            let netUpVotesa = a.upvotes-a.downvotes;
-                            if (netUpVotesb == 0)
+                            let netUpvotesb = b.upvotes-b.downvotes;
+                            let netUpvotesa = a.upvotes-a.downvotes;
+                            if (netUpvotesb == 0)
                             {
-                                netUpVotesb = 1;
+                                netUpvotesb = 1;
                             }
                             if (netUpvotesa == 0)
                             {
