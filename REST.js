@@ -166,7 +166,6 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
         connection.query(textPostsQuery,function(err,rows){
             if(err) {
                 res.json({"Error" : true, "Message" : err});
-                console.log(postList)
             } else {
             	Array.prototype.push.apply(postList, rows);
                 res.json({"Error" : false, "Message" : postList})
