@@ -152,7 +152,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
         }); 
     });
 
-    router.get("/get_posts",function(req,res){
+    router.get("/get_posts/",function(req,res){
     	var postList = [];
         var picturePostsQuery = "SELECT * FROM posts INNER JOIN post_images ON posts.post_id = post_images.post_id";
         connection.query(picturePostsQuery,function(err,rows){
