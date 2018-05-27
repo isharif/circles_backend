@@ -178,7 +178,17 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                             let postTwoDate = new Date(b.submitted);
                             let postOneTime = (postOneDate.getTime() -  baseDate.getTime())*10^6;
                             let postTwoTime = (postTwoDate.getTime() - baseDate.getTime())*10^6;
-                            return 9000*Math.log2(b.upvotes-b.downvotes)+postTwoTime - 9000*Math.log2(a.upvotes-a.downvotes)+postOneTime;
+                            let netUpVotesb = b.upvotes-b.downvotes;
+                            let netUpVotesa = a.upvotes-a.downvotes;
+                            if (netUpVotesb == 0)
+                            {
+                                netUpVotesb = 1;
+                            }
+                            if (netUpvotesa == 0)
+                            {
+                                netUpvotesa = 1;
+                            }
+                            return 9000*Math.log2(netUpvotesb)+postTwoTime - 9000*Math.log2(netUpvotesa)+postOneTime;
                         });
                         break;
                     case "best":
@@ -193,7 +203,17 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                             let postTwoDate = new Date(b.submitted);
                             let postOneTime = (postOneDate.getTime() -  baseDate.getTime())*10^6;
                             let postTwoTime = (postTwoDate.getTime() - baseDate.getTime())*10^6;
-                            return (9000*Math.log2(b.upvotes-b.downvotes)+postTwoTime)*(b.downvotes/b.upvotes) - (9000*Math.log2(a.upvotes-a.downvotes)+postOneTime)*(a.downvotes/a.upvotes);
+                            let netUpVotesb = b.upvotes-b.downvotes;
+                            let netUpVotesa = a.upvotes-a.downvotes;
+                            if (netUpVotesb == 0)
+                            {
+                                netUpVotesb = 1;
+                            }
+                            if (netUpvotesa == 0)
+                            {
+                                netUpvotesa = 1;
+                            }
+                            return (9000*Math.log2(netUpvotesb)+postTwoTime)*(b.downvotes/b.upvotes) - (9000*Math.log2(netUpvotesa)+postOneTime)*(a.downvotes/a.upvotes);
                         });
                     break;
                     case "new":
