@@ -160,7 +160,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                 res.json({"Error" : true, "Message" : err});
             } else {
                 Array.prototype.push.apply(postList, rows);
-                console.log("Posts were gotten" + postList);
+                console.log("Posts were gotten");
             }
         });
         var textPostsQuery = "SELECT * FROM posts INNER JOIN text_posts ON posts.post_id = text_posts.post_id"
@@ -169,7 +169,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                 res.json({"Error" : true, "Message" : err});
             } else {
             	Array.prototype.push.apply(postList, rows);
-                console.log("Posts were gotten" + postList);
+                console.log("Posts were gotten");
                 res.json({"Error" : false, "Message" : postList})
             }
         });
