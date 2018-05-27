@@ -168,7 +168,8 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             if(err) {
                 res.json({"Error" : true, "Message" : err});
             } else {
-            	Array.prototype.push.apply(postList, rows);
+                Array.prototype.push.apply(postList, rows);
+                console.log("this is the stuff in the posts page"+postList)
                 res.json({"Error" : false, "Message" : postList})
             }
         });
