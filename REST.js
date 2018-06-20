@@ -169,7 +169,6 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                 res.json({"Error" : true, "Message" : err});
             } else {
                 Array.prototype.push.apply(postList, rows);
-                console.log("this is the stuff in postList"+JSON.stringify(postList));
                 switch(req.query.type) {
                     case "hot":
                         postList.sort(function(a, b){
@@ -228,7 +227,6 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
                     break;
                     default:
                 }         
-                console.log("this is the stuff in postList after sorting"+JSON.stringify(postList));       
                 res.json({"Error" : false, "Message" : postList})
             }
         });
